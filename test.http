@@ -1,8 +1,51 @@
-POST http://localhost:3000/users
+POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "john",
-    "email": "john@joh.john",
+    "name": "bob",
+    "email": "bob@joh.bob",
     "age": 11
 }
+
+
+###
+GET http://localhost:3000/api/users
+
+###
+PUT http://localhost:3000/users/674d802a4305f47882023e
+Content-Type: application/json
+
+{
+    "name": "BLABLA",
+    "email": "BLABLA@joh.BLABLA",
+    "age": 11
+}
+
+###
+DELETE http://localhost:3000/users/674d82c14305f4da78820241
+
+###
+
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+    "title": "nouveau post",
+    "content": "trop bien mon post",
+    "author" : "674d8f09c4d9c2e89ba95a97"
+}
+
+
+###
+
+
+PUT http://localhost:3000/api/posts/674dcc9ffb502f005dae2679
+Content-Type: application/json
+
+{
+    "title": "LKQHFLKQHEAGst",
+    "content": "LAEHFLKAHKLFHLAKEFHKL",
+    "author" : "674d8f09c4d9c2e89ba95a97"
+}
+###
+GET http://localhost:3000/api/posts/

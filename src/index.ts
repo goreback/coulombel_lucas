@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';
 import mongoose from 'mongoose';
 import userRoutes from './routes/userRoutes';
+import postRoutes from './routes/postRoutes';
 
 
 
@@ -12,6 +13,7 @@ const PORT = 3000;
 app.use(express.json());
 
 app.use('/api', userRoutes);
+app.use('/api', postRoutes);
 
 
 const uri = "mongodb://root:example@localhost:27017/";
