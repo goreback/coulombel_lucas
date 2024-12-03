@@ -50,3 +50,22 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/api/posts/search?limit=2&page=2&order=asc
 
+###
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+    "name": "bob",
+    "email": "bob@boayyby.bob",
+    "password": "123456",
+    "age": 12
+}
+
+###
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "email": "bob@boayyby.bob",
+    "password": "123456"
+}

@@ -2,7 +2,9 @@ import express, {Request, Response} from 'express';
 import mongoose from 'mongoose';
 import userRoutes from './routes/userRoutes';
 import postRoutes from './routes/postRoutes';
-
+import authRoutes from './routes/authRoutes';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 
@@ -14,10 +16,11 @@ app.use(express.json());
 
 app.use('/api', userRoutes);
 app.use('/api', postRoutes);
+app.use('/api', authRoutes);
 
 
-const uri = "mongodb://root:example@localhost:27017/";
-mongoose.connect(uri)
+const uri = process.env.URI;
+mongoose.connect(uri as string)
     .then(() => {
         console.log('Connected to MongoDB')
     })
