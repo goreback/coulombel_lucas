@@ -81,3 +81,30 @@ export const deletePost = async (req: Request, res: Response) => {
         res.status(500).json({message: error.message})
     }
 }
+
+export const searchPosts = async (req: Request, res: Response) => {
+    try {
+        const { q, startDate, endDate } = req.query
+
+        const filter: Record<string, any> = {};
+
+        if (q) {
+            filter.$text = { $search: q };
+        }
+
+        if (startDate || endDate) {
+            filter.createdAt = {};
+            if (startDate) {
+                filter.createdAt.$gte = new Date(startDate as string);
+            }
+            if (endDate) {
+                filter.createdAt.$lte = new Date(endDate as string);
+            }
+        }
+        const posts = await Post.find(filter).populate("author");
+        res.status(200).json(posts)
+    } catch (error: any) {
+        res.status(500).json({message: error.message})
+    }
+}
+

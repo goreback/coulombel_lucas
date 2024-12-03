@@ -14,6 +14,8 @@ const postSchema = new Schema<IPost>({
     createdAt: {type: Date, default: Date.now}
 })
 
+postSchema.index({title: 'text', content: 'text'})
+
 const Post = model<IPost>('Post', postSchema);
 
 export default Post
