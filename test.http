@@ -48,5 +48,5 @@ Content-Type: application/json
     "author" : "674d8f09c4d9c2e89ba95a97"
 }
 ###
-GET http://localhost:3000/api/posts/search?endDate=2024-12-05&q=titre
+GET http://localhost:3000/api/posts/search?limit=2&page=2&order=asc
 

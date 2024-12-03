@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 import Post from "../models/Post";
 import User from "../models/User";
-
+import { SortOrder } from "mongoose";
 export const getAllPosts = async (req: Request, res: Response) => {
     try {
         const posts = await Post.find().populate("author", "name email");
@@ -84,7 +84,7 @@ export const deletePost = async (req: Request, res: Response) => {
 
 export const searchPosts = async (req: Request, res: Response) => {
     try {
-        const { q, startDate, endDate } = req.query
+        const { q, startDate, endDate, sort = 'createdAt', order = 'asc', page, limit } = req.query
 
         const filter: Record<string, any> = {};
 
@@ -100,8 +100,20 @@ export const searchPosts = async (req: Request, res: Response) => {
             if (endDate) {
                 filter.createdAt.$lte = new Date(endDate as string);
             }
+
+            
         }
-        const posts = await Post.find(filter).populate("author");
+        // CONDITION ? TRUE : FALSE
+        const sortOrder: { [key: string]: SortOrder}  = { [sort as string]: order === 'asc' ? 1 : -1 };
+        const skip = (Number(page) - 1) * Number(limit);
+
+
+        const posts = await Post.find(filter)
+        .sort(sortOrder)
+        .skip(skip)
+        .limit(Number(limit))
+        .populate("author");
+
         res.status(200).json(posts)
     } catch (error: any) {
         res.status(500).json({message: error.message})
