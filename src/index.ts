@@ -1,9 +1,8 @@
-import express, {Request, Response} from 'express';
-import mongoose from 'mongoose';
-import userRoutes from './routes/userRoutes';
-import postRoutes from './routes/postRoutes';
-import authRoutes from './routes/authRoutes';
-import dotenv from 'dotenv';
+import express, {Request, Response} from 'express';// 1
+import mongoose from 'mongoose';//3
+import projectsRoutes from './routes/projectsRoutes';
+import tasksRoutes from './routes/tasksRoutes';
+import dotenv from 'dotenv';//2
 dotenv.config();
 
 
@@ -12,14 +11,15 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
+// Middleware
 app.use(express.json());
 
-app.use('/api', userRoutes);
-app.use('/api', postRoutes);
-app.use('/api', authRoutes);
+app.use('/api', projectsRoutes);
+app.use('/api', tasksRoutes);
 
 
-const uri = process.env.URI;
+// connexion mongo
+const uri = process.env.MONGO_URI;
 mongoose.connect(uri as string)
     .then(() => {
         console.log('Connected to MongoDB')
@@ -28,9 +28,7 @@ mongoose.connect(uri as string)
         console.log('Error connecting to MongoDB', error)
     })
 
-
-
-
+// ecoute sur le port 3000
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)
 })

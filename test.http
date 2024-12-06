@@ -1,71 +1,69 @@
-POST http://localhost:3000/api/users
+### Créer un projet
+POST http://localhost:3000/api/projects
 Content-Type: application/json
 
 {
-    "name": "bob",
-    "email": "bob@joh.bob",
-    "age": 11
+  "id": "",
+  "name": "projet 1",
+  "description": "test"
+  
 }
 
+### Lister tous les projets
+GET http://localhost:3000/projects
 
-###
-GET http://localhost:3000/api/users
+### Récupérer un projet par id 
+GET http://localhost:3000/projects/:id
 
-###
-PUT http://localhost:3000/users/674d802a4305f47882023e
+### Mettre à jour un projet 
+PUT http://localhost:3000/projects/:id
 Content-Type: application/json
 
 {
-    "name": "BLABLA",
-    "email": "BLABLA@joh.BLABLA",
-    "age": 11
+  "name": "update vers projet 2",
+  "status": "in-progress"
 }
 
-###
-DELETE http://localhost:3000/users/674d82c14305f4da78820241
+### Supprimer un projet 
+DELETE http://localhost:3000/projects/:id
 
-###
+### Marquer un projet comme complété 
+POST http://localhost:3000/projects/:id/complete
 
-POST http://localhost:3000/api/posts
+### Filtrer les projets par statut
+GET http://localhost:3000/projects/by-status?status=in-progress
+
+
+### Créer une tâche 
+POST http://localhost:3000/tasks
 Content-Type: application/json
 
 {
-    "title": "nouveau post",
-    "content": "trop bien mon post",
-    "author" : "674d8f09c4d9c2e89ba95a97"
+  "projectId": "",
+  "title": "Ma première tâche",
+  "dueDate": "2024-12-31"
 }
 
+### Lister toutes les tâches
+GET http://localhost:3000/tasks
 
-###
+### Lister les tâches d'un projet spécifique 
+GET http://localhost:3000/tasks?projectId=projectId
 
+### Récupérer une tâche par id 
+GET http://localhost:3000/tasks/:id
 
-POST http://localhost:3000/api/posts/
+### Mettre à jour une tâche 
+PUT http://localhost:3000/tasks/:id
 Content-Type: application/json
 
 {
-    "title": "contenu ici",
-    "content": "titre la",
-    "author" : "674d8f09c4d9c2e89ba95a97"
-}
-###
-GET http://localhost:3000/api/posts/search?limit=2&page=2&order=asc
-
-###
-POST http://localhost:3000/api/register
-Content-Type: application/json
-
-{
-    "name": "bob",
-    "email": "bob@boayyby.bob",
-    "password": "123456",
-    "age": 12
+  "title": "Tâche mise à jour",
+  "dueDate": "2024-11-30"
 }
 
-###
-POST http://localhost:3000/api/login
-Content-Type: application/json
+### Supprimer une tâche 
+DELETE http://localhost:3000/tasks/:id
 
-{
-    "email": "bob@boayyby.bob",
-    "password": "123456"
-}
+### Filtrer les tâches par date
+GET http://localhost:3000/tasks/due-before?date=2024-12-31
