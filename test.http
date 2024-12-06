@@ -1,3 +1,7 @@
+@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGYxMTUxZjJiNjUxYmM1ZDMxNTZmNCIsImlhdCI6MTczMzIzODE4MywiZXhwIjoxNzMzMzI0NTgzfQ.GEnl1f9lPjglKJbDm_q1hm2q8OGEN7pHxd1Vz_kFCug"
+
+###
+
 POST http://localhost:3000/api/users
 Content-Type: application/json
 
@@ -10,6 +14,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/api/users
+Authorization: Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGYxMTUxZjJiNjUxYmM1ZDMxNTZmNCIsImlhdCI6MTczMzIzODE4MywiZXhwIjoxNzMzMzI0NTgzfQ.GEnl1f9lPjglKJbDm_q1hm2q8OGEN7pHxd1Vz_kFCug
 
 ###
 PUT http://localhost:3000/users/674d802a4305f47882023e
@@ -53,6 +58,7 @@ GET http://localhost:3000/api/posts/search?limit=2&page=2&order=asc
 ###
 POST http://localhost:3000/api/register
 Content-Type: application/json
+Authorization: Bearer  token
 
 {
     "name": "bob",
