@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 ### Créer un projet
 POST http://localhost:3000/api/projects
+=======
+@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGYxMTUxZjJiNjUxYmM1ZDMxNTZmNCIsImlhdCI6MTczMzIzODE4MywiZXhwIjoxNzMzMzI0NTgzfQ.GEnl1f9lPjglKJbDm_q1hm2q8OGEN7pHxd1Vz_kFCug"
+
+###
+
+POST http://localhost:3000/api/users
+>>>>>>> 7624afb2fd62ee70c3f92cf3daebbceec0d94a75
 Content-Type: application/json
 
 {
@@ -12,8 +20,14 @@ Content-Type: application/json
 ### Lister tous les projets
 GET http://localhost:3000/projects
 
+<<<<<<< HEAD
 ### Récupérer un projet par id 
 GET http://localhost:3000/projects/:id
+=======
+###
+GET http://localhost:3000/api/users
+Authorization: Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGYxMTUxZjJiNjUxYmM1ZDMxNTZmNCIsImlhdCI6MTczMzIzODE4MywiZXhwIjoxNzMzMzI0NTgzfQ.GEnl1f9lPjglKJbDm_q1hm2q8OGEN7pHxd1Vz_kFCug
+>>>>>>> 7624afb2fd62ee70c3f92cf3daebbceec0d94a75
 
 ### Mettre à jour un projet 
 PUT http://localhost:3000/projects/:id
@@ -58,8 +72,28 @@ PUT http://localhost:3000/tasks/:id
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
   "title": "Tâche mise à jour",
   "dueDate": "2024-11-30"
+=======
+    "title": "contenu ici",
+    "content": "titre la",
+    "author" : "674d8f09c4d9c2e89ba95a97"
+}
+###
+GET http://localhost:3000/api/posts/search?limit=2&page=2&order=asc
+
+###
+POST http://localhost:3000/api/register
+Content-Type: application/json
+Authorization: Bearer  token
+
+{
+    "name": "bob",
+    "email": "bob@boayyby.bob",
+    "password": "123456",
+    "age": 12
+>>>>>>> 7624afb2fd62ee70c3f92cf3daebbceec0d94a75
 }
 
 ### Supprimer une tâche 
